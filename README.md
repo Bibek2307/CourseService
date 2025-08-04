@@ -77,6 +77,7 @@ eureka.client.fetch-registry=false
 
 ## Microservices application.properties Example
 All services should use different ports:
+```xml
 spring.application.name=AcademyService
 server.port=9000
 
@@ -90,6 +91,19 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgresPlusDialec
 
 eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
 eureka.instance.prefer-ip-address=true
-
+```
 Update the above config in each service's properties file, changing only the name & port (e.g., CourseService, InstructorService).
 
+## How To Run
+1. Start the Eureka Server
+2. Start the respective microservices
+3. Start PostMan to communicate with the respective endpoints 
+
+## ✅ Notes
+Each service registers itself to Eureka at startup.
+You can always change the server.port and endpoints in application properties and controller class
+You can view Eureka dashboard at:
+👉 http://localhost:8761
+
+Test aggregated output via AcademyService API:
+http://localhost:9000/academy/course-details/1
